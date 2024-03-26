@@ -1,0 +1,16 @@
+server:
+  port: 80 #내장 tomcat이 사용할 port 번호 (개발할 때만 적용 = 배포할 때는 상관 없음)
+  servlet:
+    encoding:
+      charset: UTF-8 #jsp가 사용
+      force: true
+
+spring:
+  mvc:
+    view:
+      prefix: /views/ #spring의 mvc 중 v가 존재하는 경로
+      suffix: .jsp #v의 확장자
+
+logging: #log가 찍히는 level
+  level:
+    root: info
