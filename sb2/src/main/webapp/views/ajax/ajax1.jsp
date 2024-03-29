@@ -1,8 +1,30 @@
+<script>
+    let ajax1 = {
+        init:function (){
+            setInterval(function (){
+                $.ajax({
+                    url:'/getservertime',
+                    success:function (data){
+                        ajax1.display(data);
+                    },
+                    error: function (){
+
+                    }
+                });
+            }, 1000);
+        },
+        display:function (data){
+            $('#result').text(data);
+        }
+    };
+
+    $(function (){
+        ajax1.init();
+    })
+</script>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
     <h2>Ajax1 Page</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg">Fake Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <h3>Server Time</h3>
+    <h3 id="result"></h3>
 </div>
