@@ -1,4 +1,4 @@
-package com.hana.sb1.controller;
+package com.hana.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
