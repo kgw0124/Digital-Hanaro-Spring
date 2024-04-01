@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	<!-- 127.0.0.1:8080/sb1/main.css -->
+	<!-- jstl로 url를 안잡아주면 ROOT 어플리케이션에서 main.css를 찾음
+        : sb1에서 main.css를 찾을 수 있게
+        => 상대경로 잡아줌
+    -->
+	<link href="css/main.css" rel="stylesheet">
+	<style>
+
+	</style>
+</head>
+
+<body>
+<header>
+	<h1>Main Page</h1>
+	<ul>
+		<li><a th:href="@{/}">MAIN</a></li>
+		<li><a th:href="@{/log}">LOGIN</a></li>
+		<li><a th:href="@{/reg}">REGISTER</a></li>
+		<li><a th:href="@{/cust/add}">CUST ADD</a></li>
+		<li><a href="">CUST GET</a></li>
+	</ul>
+</header>
+<!-- 위의 li태그 안에 a태그를 누를 ?마다 section 부분이 교체된다 -->
+<section th:include="${centerpage} ? ${centerpage}:center">
+	<!-- centerpage 변수가 있으면 걔를 삽입 / 없으면 center페이지 삽입 -->
+
+</section>
+<footer></footer>
+</body>
+</html>

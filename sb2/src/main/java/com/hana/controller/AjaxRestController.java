@@ -1,8 +1,11 @@
 package com.hana.controller;
 
 // !! ajax를 통해 호출되면 controller 대신 restcontroller 사용
+import com.hana.app.dto.Chart2Dto;
 import com.hana.app.dto.CustDto;
 import com.hana.app.dto.ShopDto;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,5 +48,36 @@ public class AjaxImplController {
         list.add(new ShopDto(101, "파스타", "b.jpg", 37.5647611,127.0754625));
         list.add(new ShopDto(102, "햄버거", "c.jpg", 37.5747611,127.0854625));
         return list;
+    }
+
+    @RequestMapping("/chart2")
+    public Object chart2(){
+        JSONArray ja = new JSONArray();
+
+        List<Chart2Dto> list = new ArrayList<>();
+        // [{"name":"S001","m1":10,....},{},{},{}]
+        list.add(new Chart2Dto("S001",10,20,30,20,10,15));
+        list.add(new Chart2Dto("S002",13,30,60,10,10,25));
+        list.add(new Chart2Dto("S003",11,10,70,80,15,35));
+        list.add(new Chart2Dto("S004",18,20,20,90,22,45));
+
+        list.stream().forEach(c->{
+            JSONObject jo = new JSONObject();
+            // [{name, data:[]}]
+            jo.put("name",c.getName());
+            jo.put("data",c.getM());
+            ja.add(jo);
+        });
+
+        /*
+        for(Chart2Dto c:list){
+            JSONObject jo = new JSONObject();
+            // [{name, data:[]}]
+            jo.put("name",c.getName());
+            jo.put("data",c.getM());
+            ja.add(jo);
+        }
+         */
+        return ja;
     }
 }
