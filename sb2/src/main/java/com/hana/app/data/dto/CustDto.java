@@ -1,4 +1,4 @@
-package com.hana.app.dto;
+package com.hana.app.data.dto;
 
 import lombok.*;
 

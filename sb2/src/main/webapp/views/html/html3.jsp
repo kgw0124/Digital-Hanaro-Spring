@@ -1,8 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+    let html3 = {
+        init: function (){
+        }
+    };
+
+    $(function (){
+        html3.init();
+    })
+</script>
 <div class="container">
-    <h2>HTML3 Page</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg">Fake Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <h2>HTML3 Page - DB에 저장된 데이터 조회</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>PWD</th>
+            <th>NAME</th>
+        </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="c" items="${custs}">
+                <tr>
+                    <td><a href="<c:url value="/html/get"/>?id=${c.id}">${c.id}</a></td>
+                    <td>${c.pwd}</td>
+                    <td>${c.name}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </div>

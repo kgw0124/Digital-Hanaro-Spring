@@ -5,12 +5,9 @@
 <ul class="nav nav-pills flex-column">
     <p>Cust</p>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/cust/cust1"/> ">Cust1</a>
+        <a class="nav-link" href="<c:url value="/cust/add"/>">Add</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/cust/cust2"/> ">Cust2</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/cust/cust3"/> ">Cust3</a>
+        <a class="nav-link" href="<c:url value="/cust/get"/>">Get</a>
     </li>
 </ul>

@@ -9,18 +9,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <script>
     let chart5 = {
-        init:function(){
+        init: function () {
         }
     };
-    $(function(){
+    $(function () {
         chart5.init();
     });
 </script>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
 </html>

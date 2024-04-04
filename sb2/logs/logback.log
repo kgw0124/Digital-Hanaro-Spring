@@ -1,0 +1,56 @@
+[2024-04-04 09:22:37:4898][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 43 mappings in 'requestMappingHandlerMapping'
+[2024-04-04 09:22:37:4981][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2024-04-04 09:22:37:5019][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2024-04-04 09:22:37:5065][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2024-04-04 09:22:38:5590][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2024-04-04 09:22:38:5590][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2024-04-04 09:22:38:5590][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2024-04-04 09:22:38:5596][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2024-04-04 09:22:38:5596][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2163da5b
+[2024-04-04 09:22:38:5596][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@25fa713e
+[2024-04-04 09:22:38:5596][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2024-04-04 09:22:38:5596][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+[2024-04-04 09:22:38:5599][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2024-04-04 09:22:38:5613][http-nio-80-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.hana.controller.MainController#main()
+[2024-04-04 09:22:38:5639][http-nio-80-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2024-04-04 09:22:38:5639][http-nio-80-exec-1] DEBUG o.s.web.servlet.view.JstlView - View name 'index', model {}
+[2024-04-04 09:22:38:5639][http-nio-80-exec-1] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2024-04-04 09:22:39:6730][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2024-04-04 09:22:39:6794][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/0327.js;jsessionid=25AF93BEA8829418F02627F3588762EC", parameters={}
+[2024-04-04 09:22:39:6795][http-nio-80-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+[2024-04-04 09:22:39:6833][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2024-04-04 09:22:39:6878][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/favicon.ico", parameters={}
+[2024-04-04 09:22:39:6878][http-nio-80-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+[2024-04-04 09:22:39:6878][http-nio-80-exec-2] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+[2024-04-04 09:22:39:6890][http-nio-80-exec-2] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+[2024-04-04 09:22:39:6890][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+[2024-04-04 09:22:39:6890][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+[2024-04-04 09:22:39:6895][http-nio-80-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+[2024-04-04 09:22:39:6917][http-nio-80-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+[2024-04-04 09:22:39:6930][http-nio-80-exec-2] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Thu Apr 04 09:22:39 KST 2024, status=404, error=Not Found, trace=org.springframework.web. (truncated)...]
+[2024-04-04 09:22:39:6968][http-nio-80-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+[2024-04-04 09:23:04:2635][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 43 mappings in 'requestMappingHandlerMapping'
+[2024-04-04 09:23:04:2711][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2024-04-04 09:23:04:2741][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2024-04-04 09:23:04:2773][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+[2024-04-04 09:23:29:28035][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[2024-04-04 09:23:29:28035][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+[2024-04-04 09:23:29:28035][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+[2024-04-04 09:23:29:28035][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+[2024-04-04 09:23:29:28038][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@71af7ee
+[2024-04-04 09:23:29:28038][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@240aeb64
+[2024-04-04 09:23:29:28038][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+[2024-04-04 09:23:29:28038][http-nio-80-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+[2024-04-04 09:23:29:28055][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+[2024-04-04 09:23:29:28071][http-nio-80-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.hana.controller.MainController#main()
+[2024-04-04 09:23:29:28107][http-nio-80-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+[2024-04-04 09:23:29:28107][http-nio-80-exec-1] DEBUG o.s.web.servlet.view.JstlView - View name 'index', model {}
+[2024-04-04 09:23:29:28116][http-nio-80-exec-1] DEBUG o.s.web.servlet.view.JstlView - Forwarding to [/views/index.jsp]
+[2024-04-04 09:23:31:30166][http-nio-80-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2024-04-04 09:23:31:30199][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/js/0327.js", parameters={}
+[2024-04-04 09:23:31:30204][http-nio-80-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+[2024-04-04 09:23:31:30223][http-nio-80-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+[2024-04-04 09:28:31:2486][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 43 mappings in 'requestMappingHandlerMapping'
+[2024-04-04 09:28:31:2553][restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /imgs/**, /logs/**] in 'resourceHandlerMapping'
+[2024-04-04 09:28:31:2582][restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+[2024-04-04 09:28:31:2617][restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice

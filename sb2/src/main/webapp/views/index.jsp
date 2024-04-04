@@ -15,6 +15,12 @@
 
     <!-- KAKAO MAP API -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca1dd262f4946f0f2149119962345b7e"></script>
+    <!-- HighChart API -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <script src="<c:url value="/js/0327.js"/> "></script>
     <style>
@@ -47,7 +53,7 @@
     <c:otherwise>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">${id}</a>
+                <a href="<c:url value="/cust/detail"/>?id=${id}">${id}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/logout" />">REGISTER</a>
