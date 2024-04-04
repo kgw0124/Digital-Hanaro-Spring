@@ -1,10 +1,11 @@
 package com.hana.app.service;
 
 import com.hana.app.data.dto.AddrDto;
+import com.hana.app.data.dto.CustDto;
 import com.hana.app.frame.HanaService;
 import com.hana.app.repository.AddrRepository;
+import com.hana.app.repository.CustRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class AddrService implements HanaService<Integer, AddrDto> {
     }
 
     @Override
-    public int del(Integer i) throws Exception {
-        return addrRepository.delete(i);
+    public int del(Integer s) throws Exception {
+        return addrRepository.delete(s);
     }
 
     @Override
@@ -31,12 +32,17 @@ public class AddrService implements HanaService<Integer, AddrDto> {
     }
 
     @Override
-    public AddrDto get(Integer i) throws Exception {
-        return addrRepository.selectOne(i);
+    public AddrDto get(Integer s) throws Exception {
+        return addrRepository.selectOne(s);
     }
 
     @Override
     public List<AddrDto> get() throws Exception {
         return addrRepository.select();
     }
+
+    public List<AddrDto> findByCustId(String id) throws Exception{
+        return addrRepository.findByCustId(id);
+    }
+
 }
