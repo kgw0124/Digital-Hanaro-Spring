@@ -36,41 +36,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>PWD</th>
-                        <th>NAME</th>
-                        <th>UPDATE</th>
-                        <th>DELETE</th>
-                    </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>PWD</th>
-                        <th>NAME</th>
-                        <th>UPDATE</th>
-                        <th>DELETE</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    <c:forEach var="c" items="${custs}">
-                        <tr>
-                            <td><a href="<c:url value="/cust/detail"/>?id=${c.id}">${c.id}</a></td>
-                            <td>${c.pwd}</td>
-                            <td>${c.name}</td>
-                            <td>
-                                <button onclick="" type="button" class="btn btn-primary">Update</button>
-                            </td>
-                            <td>
-                                <button onclick="" type="button" class="btn btn-primary">Delete</button>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                <h3 class="m-0 font-weight-bold text-primary">${msg}</h3>
             </div>
         </div>
     </div>
