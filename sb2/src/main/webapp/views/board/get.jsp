@@ -1,11 +1,23 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+    .comment{
+        color: red !important;
+    }
+</style>
 
+<script>
+    let html3 = {
+        init: function () {
+        }
+    };
+    $(function () {
+        html3.init();
+    });
+</script>
 <div class="container">
-    <h2>Center Page</h2>
-    <h5>Title description, Sep 2, 2017</h5>
+    <h1>Board Get</h1>
     <table class="table table-striped" id="board_table">
         <thead>
         <tr>
@@ -17,10 +29,15 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="b" items="${ranks}">
+        <c:forEach var="b" items="${boards}">
             <tr>
                 <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
-                <td>${b.boardTitle}</td>
+                <td>
+                    ${b.boardTitle}
+                    <c:if test="${b.commentCnt != 0}">
+                        <span class="comment">[${b.commentCnt}]</span>
+                    </c:if>
+                </td>
                 <td>${b.custId}</td>
                 <td>
                     <fmt:parseDate value="${b.boardRegdate}"
@@ -32,7 +49,12 @@
         </c:forEach>
         </tbody>
     </table>
-
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
 </div>
+
+
+
+
+
+
+
+
