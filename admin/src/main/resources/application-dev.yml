@@ -31,6 +31,9 @@ app:
     uploadimgdir: C:/Workspace/JavaWorkspace/Digital-Hanaro-Spring-Practice/imgs/ #파일 write용
     logdir: file:C:/Workspace/JavaWorkspace/Digital-Hanaro-Spring-Practice/logs/
   url:
-    chart-url: http://127.0.0.1:81
-
-    #    file:/root/users/project/imgs/
+    server-url: http://172.16.20.169:81 #내 컴퓨터 ip
+  key:
+    wkey: NnOnJEKXvopIFIhBe2QgBXhLNfkDn1AyyY1IiMcKx2TutRSVVb8Cf9t%2FTQLz8p5moigWyrsLLrulQWrUP%2BjlMw%3D%3D
+    whkey: 04670200d6dfdffa3a158c9401f2104a
+    ncp-id: tlxux2zvam
+    ncp-secret: bDrglALkBbwOlram9XW6rXglz5QToXZjn5RacsA5
