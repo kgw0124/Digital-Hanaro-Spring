@@ -1,8 +1,9 @@
 package com.hana.addr;
 
 import com.hana.app.data.dto.AddrDto;
+import com.hana.app.data.dto.CustDto;
 import com.hana.app.service.AddrService;
-import lombok.RequiredArgsConstructor;
+import com.hana.app.service.CustService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +14,26 @@ import java.sql.SQLException;
 
 @SpringBootTest
 @Slf4j
-public class InsertTests {
+class InsertTests {
+
     @Autowired
     AddrService addrService;
     @Test
-    void contextLoads(){
-        AddrDto addrDto = AddrDto.builder().addrName("test1").addrDetail("test1").custId("id01").build();
+    void contextLoads() {
+        AddrDto addrDto = AddrDto.builder().addrName("우리집3").addrDetail("서울1").custId("id03").build();
         try {
             addrService.add(addrDto);
-            log.info("-----OK-----");
+            log.info("----------OK----------------");
         } catch (Exception e) {
-            e.printStackTrace();
             if(e instanceof SQLException){
-                log.info("-----System Trouble EX001-----");
+                log.info("----------System Trouble EX0001----------------");
             }else if(e instanceof DuplicateKeyException){
-                log.info("-----System Trouble EX002-----");
+                log.info("----------ID Duplicated EX0002----------------");
             }else{
-                log.info("-----System Trouble EX003-----");
+                log.info("----------Sorry EX0003----------------");
             }
-            throw new RuntimeException(e);
+
         }
     }
+
 }

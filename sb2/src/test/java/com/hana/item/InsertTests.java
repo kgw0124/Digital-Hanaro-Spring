@@ -4,7 +4,6 @@ import com.hana.app.data.dto.CustDto;
 import com.hana.app.data.dto.ItemDto;
 import com.hana.app.service.CustService;
 import com.hana.app.service.ItemService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,27 +13,28 @@ import org.springframework.dao.DuplicateKeyException;
 import java.sql.SQLException;
 
 @SpringBootTest
-@RequiredArgsConstructor
 @Slf4j
-public class InsertTests {
+class InsertTests {
+
     @Autowired
-    ItemService itemService;
+    ItemService insertService;
     @Test
-    void contextLoads(){
-        ItemDto itemDto = ItemDto.builder().itemName("shirts").itemPrice(10000).imgName("p.jpg").build();
+    void contextLoads() {
+        ItemDto itemDto = ItemDto.builder().itemName("shirts").itemPrice(10000L).imgName("b.jpg").build();
         try {
-            itemService.add(itemDto);
-            log.info("-----OK-----");
+            insertService.add(itemDto);
+            log.info("----------OK----------------");
         } catch (Exception e) {
             if(e instanceof SQLException){
-                log.info("-----System Trouble EX001-----");
+                log.info("----------System Trouble EX0001----------------");
             }else if(e instanceof DuplicateKeyException){
-                log.info("-----System Trouble EX002-----");
+                log.info("----------ID Duplicated EX0002----------------");
             }else{
                 e.printStackTrace();
-                log.info("-----ID Duplicated EX003-----");
+                log.info("----------Sorry EX0003----------------");
             }
-            throw new RuntimeException(e);
+
         }
     }
+
 }

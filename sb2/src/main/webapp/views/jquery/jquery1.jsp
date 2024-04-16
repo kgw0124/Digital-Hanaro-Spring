@@ -1,53 +1,41 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 2024-03-27
-  Time: 오전 9:37
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <style>
-    .form-bg:focus {
-        background: blue;
+    .form_bg{
+        background: yellow !important;
     }
 </style>
 <script>
-    let jQuery1 = {
-        init: function () {
-            $('h2').hover(
-                // 여기서 this는 h2
-                function () {
-                    $(this).text('in');
-                },
-                function () {
-                    $(this).text('out');
-                }
-            );
 
-            $('#id').focus(function () {
-                $(this).addClass('form-bg');
+    let jquery1 = {
+        init:function(){
+            $('h2').hover(function(){
+                $(this).text('in');
+            },function(){
+                $(this).text('out');
             });
 
-            $('#id').blur(function () {
-                $(this).removeClass('form-bg');
+            $('#id').focus(function(){
+               $(this).addClass('form_bg');
             });
-
-            $('#id').keyup(function () {
+            $('#id').blur(function(){
+                $(this).removeClass('form_bg');
+            });
+            $('#id').keyup(function(){
                 let id = $(this).val();
                 $('#pwd').val(id);
             });
-
-            $('#login_form > button').click(function (){
+            $('#login_form > button').click(function(){
                 $('.fakeimg').empty();
             });
         }
-    }
-    $(function () {
-        jQuery1.init();
-    });
+    };
 
+
+  $(function(){
+      jquery1.init();
+  });
 </script>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="container">
     <h2>jQuery1 Page</h2>
     <div class="fakeimg">Fake Image</div>
@@ -59,7 +47,7 @@
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+            <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
 
         </div>
 

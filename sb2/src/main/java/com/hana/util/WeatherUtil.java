@@ -9,10 +9,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class WeatherUtil {
@@ -20,10 +21,10 @@ public class WeatherUtil {
         LocalDate today = LocalDate.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String nowString = today.format(dateTimeFormatter);
-        nowString += "0600"; // (ex)20240409600
+        nowString += "0600"; // 202404090600
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=" + key); /*Service Key*/
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "="+key); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
         urlBuilder.append("&" + URLEncoder.encode("dataType","UTF-8") + "=" + URLEncoder.encode("JSON", "UTF-8")); /*요청자료형식(XML/JSON)Default: XML*/
@@ -48,7 +49,39 @@ public class WeatherUtil {
         rd.close();
         conn.disconnect();
         //System.out.println(sb.toString());
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject = (JSONObject) jsonParser.parse(sb.toString());
+        return jsonObject;
+    }
+    public static Object getWeather2(String loc, String key) throws IOException, ParseException {
 
+        String sendUrl ="https://api.openweathermap.org/data/2.5/weather";
+
+        StringBuilder urlBuilder = new StringBuilder(sendUrl); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("id","UTF-8") + "="+loc);
+        urlBuilder.append("&" + URLEncoder.encode("units","UTF-8") + "=" + "metric");
+        urlBuilder.append("&" + URLEncoder.encode("lang","UTF-8") + "=" + "kr");
+        urlBuilder.append("&" + URLEncoder.encode("appid","UTF-8") + "=" + key);
+
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        //System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        //System.out.println(sb.toString());
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(sb.toString());
         return jsonObject;

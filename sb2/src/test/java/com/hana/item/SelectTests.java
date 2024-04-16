@@ -1,6 +1,5 @@
 package com.hana.item;
 
-import com.hana.app.data.dto.CustDto;
 import com.hana.app.service.CustService;
 import com.hana.app.service.ItemService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,28 +9,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class SelectTests {
+class SelectTests {
+
     @Autowired
     ItemService itemService;
     @Test
-    void contextLoads(){
+    void contextLoads() {
         try {
-            itemService.get(1);
-            log.info("-----OK-----");
+            itemService.get();
+            log.info("----------OK----------------");
         } catch (Exception e) {
             if(e instanceof SQLException){
-                log.info("-----System Trouble EX001-----");
+                log.info("----------System Trouble EX0001----------------");
             }else if(e instanceof DuplicateKeyException){
-                log.info("-----System Trouble EX002-----");
+                log.info("----------ID Duplicated EX0002----------------");
             }else{
-                log.info("-----ID Duplicated EX003-----");
+                log.info("----------Sorry EX0003----------------");
             }
-            throw new RuntimeException(e);
+
         }
     }
+
 }

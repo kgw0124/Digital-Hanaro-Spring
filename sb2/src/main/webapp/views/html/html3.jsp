@@ -2,16 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
     let html3 = {
-        init: function (){
+        init: function () {
         }
     };
-
-    $(function (){
+    $(function () {
         html3.init();
-    })
+    });
 </script>
 <div class="container">
-    <h2>HTML3 Page - DB에 저장된 데이터 조회</h2>
+    <h1>html3</h1>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -22,12 +21,21 @@
         </thead>
         <tbody>
             <c:forEach var="c" items="${custs}">
-                <tr>
-                    <td><a href="<c:url value="/html/get"/>?id=${c.id}">${c.id}</a></td>
-                    <td>${c.pwd}</td>
-                    <td>${c.name}</td>
-                </tr>
+                 <tr>
+                     <td><a href="<c:url value="/html/get"/>?id=${c.id}">${c.id}</a></td>
+                     <td>${c.pwd}</td>
+                     <td>${c.name}</td>
+                 </tr>
             </c:forEach>
         </tbody>
     </table>
 </div>
+
+
+
+
+
+
+
+
+

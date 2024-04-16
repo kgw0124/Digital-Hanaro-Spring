@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: kgw
+  User: User
   Date: 2024-04-01
-  Time: 오후 1:03
+  Time: 오후 1:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,20 +11,20 @@
     let chart4 = {
         init: function () {
             $('#btn_get').click(()=>{
-                var gender = $('input[name="gender"]:checked').val();
+                let gender = $('input[name="gender"]:checked').val();
                 this.get(gender);
-            })
+            });
         },
-        get: function (gender){
+        get:function(gender){
             $.ajax({
                 url:'<c:url value="/chart4"/>',
-                data: {'gender': gender},
+                data:{'gender':gender},
                 success:(data)=>{
                     this.chart(data);
                 }
-            })
+            });
         },
-        chart: function (data){
+        chart:function(data){
             Highcharts.chart('container', {
                 chart: {
                     type: 'pie',
@@ -69,34 +69,27 @@
                     data: data.data
                 }]
             });
+
         }
     };
     $(function () {
         chart4.init();
     });
 </script>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-    <div class="container" id="chart4">
-        <h1>chart4</h1>
-        <div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="gender" value="f">Female
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="gender" value="m">Male
-                </label>
-            </div>
-            </div>
-            <button id="btn_get" type="button" class="btn btn-primary">GET</button>
+<div class="container" id="chart4">
+    <h1>chart4</h1>
+    <div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="gender" value="f">Female
+            </label>
         </div>
-        <div id="container"></div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="gender" value="m">Male
+            </label>
+        </div>
+        <button id="btn_get" type="button" class="btn btn-primary">GET</button>
     </div>
-</body>
-</html>
+    <div id="container"></div>
+</div>

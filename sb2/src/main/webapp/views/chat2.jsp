@@ -2,20 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
-    #all {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid red;
-    }
-
-    #me {
-        width: 400px;
-        height: 200px;
-        overflow: auto;
-        border: 2px solid blue;
-    }
-
     #to {
         width: 400px;
         height: 200px;
@@ -35,49 +21,24 @@
             $('#disconnect').click(()=>{
                 this.disconnect();
             });
-            $('#sendall').click(()=>{
-                let msg = JSON.stringify({
-                    'sendid' : this.id,
-                    'content1' : $("#alltext").val()
-                });
-                this.stompClient.send("/receiveall", {}, msg);
-            });
-            $('#sendme').click(()=>{
-                let msg = JSON.stringify({
-                    'sendid' : this.id,
-                    'content1' : $("#metext").val()
-                });
-                this.stompClient.send("/receiveme", {}, msg);
-            });
             $('#sendto').click(()=>{
                 var msg = JSON.stringify({
                     'sendid' : this.id,
                     'receiveid' : $('#target').val(),
                     'content1' : $('#totext').val()
                 });
-                this.stompClient.send('/receiveto', {}, msg);
+                this.stompClient.send('/sendchat', {}, msg);
             });
         },
         connect:function(){
             let sid = this.id;
-            let socket = new SockJS('${serverurl}/ws');
+            let socket = new SockJS('${serverurl}/chat');
             this.stompClient = Stomp.over(socket);
 
             this.stompClient.connect({}, function(frame) {
                 websocket.setConnected(true);
                 console.log('Connected: ' + frame);
-                this.subscribe('/send', function(msg) {
-                    $("#all").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1
-                        + "</h4>");
-                });
-                this.subscribe('/send/'+sid, function(msg) {
-                    $("#me").prepend(
-                        "<h4>" + JSON.parse(msg.body).sendid +":"+
-                        JSON.parse(msg.body).content1+ "</h4>");
-                });
-                this.subscribe('/send/to/'+sid, function(msg) {
+                this.subscribe('/send3/to/'+sid, function(msg) {
                     $("#to").prepend(
                         "<h4>" + JSON.parse(msg.body).sendid +":"+
                         JSON.parse(msg.body).content1
@@ -112,19 +73,9 @@
         <button id="connect">Connect</button>
         <button id="disconnect">Disconnect</button>
 
-        <h3>All</h3>
-        <input type="text" id="alltext"><button id="sendall">Send</button>
-        <div id="all"></div>
-
-        <h3>Me</h3>
-        <input type="text" id="metext"><button id="sendme">Send</button>
-        <div id="me"></div>
-
         <h3>To</h3>
-        <input type="text" id="target">
+        <input type="text" id="target" value="sadmin">
         <input type="text" id="totext"><button id="sendto">Send</button>
         <div id="to"></div>
-
     </div>
-
 </div>

@@ -56,7 +56,7 @@
                     marker: {
                         symbol: 'square'
                     },
-                    data: [1,2,3,4,5,6,7,8,9,10,11,12]
+                    data: [1,2,3,4,5,6,7,8,5,3,2,1]
 
                 }, {
                     name: 'Bergen',
@@ -67,7 +67,7 @@
                 }, {
                     name: 'Korea',
                     marker: {
-                        symbol: 'circle'
+                        symbol: 'diamond'
                     },
                     data: [-1.6, 2.3, 10.9, 13.5, 18.5, 30.5, 35.4, 16.5, 14.7, 10.7, 2.6]
                 }]

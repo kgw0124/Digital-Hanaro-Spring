@@ -1,5 +1,6 @@
 package com.hana.app.data.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Data

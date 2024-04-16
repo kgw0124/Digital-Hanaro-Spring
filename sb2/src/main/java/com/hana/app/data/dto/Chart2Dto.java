@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@ToString
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Chart2Dto {
     private String name;
     private long m1;
@@ -18,7 +17,6 @@ public class Chart2Dto {
     private long m4;
     private long m5;
     private long m6;
-
     public List<Long> getM(){
         List<Long> list = new ArrayList<>();
         list.add(this.m1);
@@ -29,4 +27,5 @@ public class Chart2Dto {
         list.add(this.m6);
         return list;
     }
+
 }

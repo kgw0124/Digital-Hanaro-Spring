@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.xml.stream.events.Comment;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,4 +26,8 @@ public class BoardDto {
     private int commentCnt;
     private List<CommentDto> commentList;
 }
+
+
+
+
 

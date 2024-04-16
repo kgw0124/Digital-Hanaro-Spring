@@ -2,24 +2,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <script>
-    let jQuery3 = {
-        init:function (){
-            $('#btn_get').click(function (){
-                $.ajax({
-                    url:'<c:url value="/getdata"/>',
-                    success:function (data){
+    let jquery3 = {
+        init:function(){
+            $('#btn_get').click(function(){
+                var url = '<c:url value="/getdata"/>';
+                    fetch(url).then(response => response.json()).then(data => {
                         alert(data);
-                    }
-                })
+                    });
+
+
+                <%--$.ajax({--%>
+                <%--    url:'<c:url value="/getdata"/>',--%>
+                <%--    success:function(data){--%>
+                <%--        alert(data);--%>
+                <%--    }--%>
+                <%--});--%>
             });
         }
-    }
-    $(function () {
-        jQuery3.init();
+    };
+    $(function(){
+        jquery3.init();
     });
 </script>
 
 <div class="container">
     <h2>jQuery3 Page</h2>
-    <button type="button" id="btn_get" class="btn btn-primary">LOGIN</button>
+    <button id="btn_get" type="button" class="btn btn-primary">GET</button>
+
 </div>

@@ -14,27 +14,25 @@ import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class SelectTests {
+class SelectTests {
+
     @Autowired
     CustService custService;
     @Test
-    void contextLoads(){
-        List<CustDto> list = new ArrayList<>();
+    void contextLoads() {
         try {
-            list = custService.get();
-            for(CustDto c: list){
-                log.info(c.toString());
-            }
-            log.info("-----OK-----");
+            custService.get();
+            log.info("----------OK----------------");
         } catch (Exception e) {
             if(e instanceof SQLException){
-                log.info("-----System Trouble EX001-----");
+                log.info("----------System Trouble EX0001----------------");
             }else if(e instanceof DuplicateKeyException){
-                log.info("-----System Trouble EX002-----");
+                log.info("----------ID Duplicated EX0002----------------");
             }else{
-                log.info("-----ID Duplicated EX003-----");
+                log.info("----------Sorry EX0003----------------");
             }
-            throw new RuntimeException(e);
+
         }
     }
+
 }

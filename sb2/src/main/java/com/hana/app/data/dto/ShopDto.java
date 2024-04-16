@@ -1,9 +1,11 @@
 package com.hana.app.data.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,3 +16,11 @@ public class ShopDto {
     private double lat;
     private double lng;
 }
+
+
+
+
+
+
+
+

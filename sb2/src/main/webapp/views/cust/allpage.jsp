@@ -1,15 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: kgw
-  Date: 2024-04-03
-  Time: 오후 2:04
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+    let html3 = {
+        init: function () {
+        }
+    };
+    $(function () {
+        html3.init();
+    });
+</script>
 <div class="container">
-    <h2>Cust Detail</h2>
-    <h3>${cust.id}</h3>
-    <h3>${cust.pwd}</h3>
-    <h3>${cust.name}</h3>
+    <h1>Cust Get</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>PWD</th>
+            <th>NAME</th>
+        </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="c" items="${cpage.getList()}">
+                 <tr>
+                     <td><a href="<c:url value="/cust/detail"/>?id=${c.id}">${c.id}</a></td>
+                     <td>${c.pwd}</td>
+                     <td>${c.name}</td>
+                 </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <jsp:include page="../page.jsp"/>
 </div>
+
+
+
+
+
+
+
+
+

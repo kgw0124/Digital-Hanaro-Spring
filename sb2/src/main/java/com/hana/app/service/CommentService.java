@@ -11,10 +11,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommentService implements HanaService<Integer, CommentDto> {
-    private final CommentRepository commentRepository;
 
+    private final CommentRepository commentRepository;
     @Override
-    public int add(CommentDto commentDto) throws Exception { // 반환값 int : 추가한 데이터가 있으면 1, 없으면 0
+    public int add(CommentDto commentDto) throws Exception {
         return commentRepository.insert(commentDto);
     }
 

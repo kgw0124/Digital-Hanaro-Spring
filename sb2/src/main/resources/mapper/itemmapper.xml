@@ -11,10 +11,10 @@
         SELECT * FROM db_item
     </select>
     <insert id="insert" parameterType="itemDto">
-        INSERT INTO db_item VALUES (0, #{itemName}, #{itemPrice}, #{imgName}, NOW(), NOW())
+        INSERT INTO db_item VALUES (0,#{itemName},#{itemPrice},#{imgName},NOW(), NOW())
     </insert>
     <update id="update" parameterType="itemDto">
-        UPDATE db_item SET item_name=#{itemName},item_price=#{itemPrice},update_date=NOW() WHERE item_id=#{itemId}
+        UPDATE db_item SET item_name=#{itemName},item_price=#{itemPrice},img_name=#{imgName},update_date=NOW()  WHERE item_id=#{itemId}
     </update>
     <delete id="delete" parameterType="Integer">
         DELETE FROM db_item WHERE item_id=#{id}

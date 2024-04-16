@@ -15,43 +15,38 @@ import java.util.List;
 @RequestMapping("/html")
 @RequiredArgsConstructor
 public class HtmlController {
+    String dir= "html/";
+
     final CustService custService;
-    String dir = "html/";
 
     @RequestMapping("/")
     public String main(Model model){
-        // webapp/views/html 속에 존재하는 left.jsp와 center.jsp를 호출시키고자 한다.
         model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"center");
+        model.addAttribute("center",dir+"center");
         return "index";
     }
-
     @RequestMapping("/html1")
     public String html1(Model model){
-        // webapp/views/html 속에 존재하는 left.jsp와 center.jsp를 호출시키고자 한다.
         model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"html1");
+        model.addAttribute("center",dir+"html1");
         return "index";
     }
-
     @RequestMapping("/html2")
     public String html2(Model model){
-        // webapp/views/html 속에 존재하는 left.jsp와 center.jsp를 호출시키고자 한다.
         model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"html2");
+        model.addAttribute("center",dir+"html2");
         return "index";
     }
-
     @RequestMapping("/html3")
     public String html3(Model model){
-        List<CustDto> list = new ArrayList<>();
+        // Data를 DB에서 조회 한다.
+        List<CustDto> list = null;
 
         try {
             list = custService.get();
-            // webapp/views/html 속에 존재하는 left.jsp와 center.jsp를 호출시키고자 한다.
             model.addAttribute("custs", list);
             model.addAttribute("left", dir+"left");
-            model.addAttribute("center", dir+"html3");
+            model.addAttribute("center",dir+"html3");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -59,14 +54,14 @@ public class HtmlController {
         return "index";
     }
 
-    @RequestMapping("/get2")
+    @RequestMapping("/get")
     public String get(Model model, @RequestParam("id") String id){
-        // id값을 DB에 조회한다.
-        CustDto c = CustDto.builder().id(id).pwd("pwdpwd").name("james").build();
-        // webapp/views/html 속에 존재하는 left.jsp와 center.jsp를 호출시키고자 한다.
+        // id값을 DB에 조회 한다.
+        CustDto c = CustDto.builder().id(id).pwd("pwdxx").name("james").build();
+
         model.addAttribute("cust", c);
         model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"get");
+        model.addAttribute("center",dir+"get");
         return "index";
     }
 }

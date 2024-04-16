@@ -9,32 +9,33 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DuplicateKeyException;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 @Slf4j
-public class SelectOneTests {
+class SelectOneTests {
+
     @Autowired
     CustService custService;
     @Test
-    void contextLoads(){
+    void contextLoads() {
         try {
-            CustDto custDto = null;
-            custDto = custService.get("222");
+            CustDto custDto;
+            custDto = custService.get("id33");
             if(custDto == null){
-                log.info("==NULL==");
+                log.info("----------NULL----------------");
+
             }
-            log.info("-----OK-----");
+            log.info("----------OK----------------");
         } catch (Exception e) {
             if(e instanceof SQLException){
-                log.info("-----System Trouble EX001-----");
+                log.info("----------System Trouble EX0001----------------");
             }else if(e instanceof DuplicateKeyException){
-                log.info("-----System Trouble EX002-----");
+                log.info("----------ID Duplicated EX0002----------------");
             }else{
-                log.info("-----ID Duplicated EX003-----");
+                log.info("----------Sorry EX0003----------------");
             }
-            throw new RuntimeException(e);
+
         }
     }
+
 }

@@ -1,35 +1,26 @@
-package com.hana;
-
-import com.hana.app.data.dto.CustDto;
+package com.hana.ncp;
 
 import com.hana.util.NcpUtil;
-import com.hana.util.StringEnc;
+import com.hana.util.OCRUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @Slf4j
-class Sb2ApplicationTests {
-    @Value("${app.key.ncp-id}")
-    String ncpId;
-    @Value("${app.key.ncp-secret}")
-    String ncpSecret;
+class OcrTests {
+    @Value("${app.dir.uploadimgdir}")
+    String dir;
     @Test
     void contextLoads() {
-        String text = "변우석은 정말 잘생겼다.";
-        JSONObject obj = (JSONObject) NcpUtil.getSentiment(ncpId, ncpSecret, text);
-        log.info(obj.toJSONString());
+        String imgname = "ex3.jpg";
+        JSONObject jsonObject = (JSONObject) OCRUtil.getResult(dir, imgname);
+        log.info(jsonObject.toJSONString());
+        Map<String, String> map = OCRUtil.getData(jsonObject);
+        map.values().forEach(txt->log.info(txt));
     }
 }

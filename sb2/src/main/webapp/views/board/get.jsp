@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
     .comment{
-        color: red !important;
+        color:red; !important
     }
 </style>
 
@@ -29,27 +29,28 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="b" items="${boards}">
-            <tr>
-                <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
-                <td>
-                    ${b.boardTitle}
-                    <c:if test="${b.commentCnt != 0}">
-                        <span class="comment">[${b.commentCnt}]</span>
-                    </c:if>
-                </td>
-                <td>${b.custId}</td>
-                <td>
-                    <fmt:parseDate value="${b.boardRegdate}"
-                                   pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
-                    <fmt:formatDate pattern="yyyy년MM월dd일 HH시mm분" value="${ parsedDateTime }" />
-                </td>
-                <td>${b.boardCnt}</td>
-            </tr>
-        </c:forEach>
+            <c:forEach var="b" items="${boards}">
+                <tr>
+                    <td><a href="<c:url value="/board/detail"/>?id=${b.boardId}">${b.boardId}</a></td>
+                     <td>
+                             ${b.boardTitle}
+                             <c:if test="${b.commentCnt != 0}">
+                                <span class="comment">[${b.commentCnt}]</span>
+                             </c:if>
+                     </td>
+                     <td>${b.custId}</td>
+                     <td>
+                         <fmt:parseDate value="${b.boardRegdate}"
+                                        pattern="yyyy-MM-dd'T'HH:mm:ss" var="parsedDateTime" type="both" />
+                         <fmt:formatDate pattern="yyyy년MM월dd일 HH시mm분" value="${ parsedDateTime }" />
+                     </td>
+                     <td>${b.boardCnt}</td>
+                 </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>
+
 
 
 
