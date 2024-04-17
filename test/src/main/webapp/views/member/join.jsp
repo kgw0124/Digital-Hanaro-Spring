@@ -189,11 +189,11 @@
                 </tr>
                 <tr>
                     <td>이름</td>
-                    <td><input type="text" id="memberName"></td>
+                    <td><input type="text" id="memberName" name="memberName"></td>
                 </tr>
                 <tr>
                     <td>이메일</td>
-                    <td><input type="text" id="memberEmail">
+                    <td><input type="text" id="memberEmail" name="memberEmail">
                 </tr>
                 <tr>
                     <td>이메일 수신여부</td>
