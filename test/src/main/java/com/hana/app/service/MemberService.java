@@ -1,10 +1,13 @@
 package com.hana.app.service;
 
 import com.hana.app.data.dto.MemberDto;
+import com.hana.app.data.dto.NoticeDto;
 import com.hana.app.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,5 +27,9 @@ public class MemberService {
 
     public void save(MemberDto memberDto) {
         memberRepository.save(memberDto);
+    }
+
+    public List<MemberDto> get() {
+        return memberRepository.selectAll();
     }
 }

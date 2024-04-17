@@ -31,4 +31,8 @@ public class CommunityService {
     public NoticeDto findById(int id) {
         return communityRepository.findById(id);
     }
+
+    public void save(NoticeDto noticeDto) {
+        communityRepository.save(noticeDto);
+    }
 }

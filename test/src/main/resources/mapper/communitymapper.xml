@@ -19,4 +19,8 @@
     <select id="findById" parameterType="Integer" resultType="noticeDto">
         SELECT * FROM company_notice WHERE notice_idx=#{id}
     </select>
+
+    <insert id="save" parameterType="noticeDto">
+        INSERT INTO company_notice VALUES (0,#{noticeTitle},#{noticeContent},#{noticeMemberId},NOW())
+    </insert>
 </mapper>

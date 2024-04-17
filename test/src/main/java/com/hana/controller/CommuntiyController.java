@@ -2,6 +2,7 @@ package com.hana.controller;
 
 import com.hana.app.data.dto.NoticeDto;
 import com.hana.app.service.CommunityService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,13 @@ public class CommuntiyController {
         List<NoticeDto> list = null;
         list = communityService.search(option, input);
         return list;
+    }
+
+    @RequestMapping("/notice/save")
+    public String save(NoticeDto noticeDto, HttpSession httpSession){
+        noticeDto.setNoticeMemberId((String) httpSession.getAttribute("id"));
+        communityService.save(noticeDto);
+        return "redirect:/admin/notice";
     }
 
     @RequestMapping("/noticeDetail")
