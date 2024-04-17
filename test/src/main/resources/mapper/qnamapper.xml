@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hana.app.repository.QnaRepository">
+
+    <select id="selectAll" resultType="qnaDto">
+        SELECT * FROM company_qna
+    </select>
+
+    <select id="searchByTitle" resultType="qnaDto">
+        SELECT * FROM company_qna WHERE qna_title LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchByContent" resultType="qnaDto">
+        SELECT * FROM company_qna WHERE qna_content LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchByWriter" resultType="qnaDto">
+        SELECT * FROM company_qna WHERE qna_name LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="findById" parameterType="String" resultType="qnaDto">
+        SELECT * FROM company_qna WHERE qna_idx=#{id}
+    </select>
+
+</mapper>

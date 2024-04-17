@@ -33,7 +33,21 @@
     ></script>
 
     <script>
-        $(function (){});
+        var isLogin = function (page){
+            if ('<%=(String)session.getAttribute("id")%>' === "null") {
+                alert("로그인이 필요합니다.");
+                window.location.href = "<c:url value="/login"/>";
+                return;
+            }
+            switch (page){
+                case "one2one":
+                    window.location.href = "<c:url value="/customer/one2one"/>";
+                    return;
+                case "qna":
+                    window.location.href = "<c:url value="/customer/qna"/>";
+                    return;
+            }
+        }
     </script>
 </head>
 <body>
@@ -45,8 +59,8 @@
 <div class="top d-none d-md-block">
     <div class="topMenu d-none d-md-block container">
         <span class="home"><a href="index.html">HOME</a></span>
-        <span><a href="./member/login.html">LOGIN</a></span>
-        <span><a href="./member/join.html">JOIN</a></span>
+        <span><a href="<c:url value="/login"/>">LOGIN</a></span>
+        <span><a href="<c:url value="/join"/>">JOIN</a></span>
         <span><a href="./company/company03.html">CONTACT US</a></span>
     </div>
 </div>
@@ -93,7 +107,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#">커뮤니티</a>
                     <div class="dropdown-content">
-                        <a href="./community/community01.html">공지사항</a>
+                        <a href="<c:url value="/community/notice"/>">공지사항</a>
                         <a href="#">홍보자료</a>
                         <a href="#">채용안내</a>
                     </div>
@@ -101,9 +115,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#">고객지원</a>
                     <div class="dropdown-content">
-                        <a href="./customer/customer01.html">1:1문의</a>
-                        <a href="./customer/customer02.html">묻고답하기</a>
-                        <a href="./customer/customer03.html">FAQ</a>
+                        <a href="#" onclick="isLogin('one2one')">1:1문의</a>
+                        <a href="#" onclick="isLogin('qna')">묻고답하기</a>
+                        <a href="#" onclick="isLogin()">FAQ</a>
                     </div>
                 </li>
             </ul>

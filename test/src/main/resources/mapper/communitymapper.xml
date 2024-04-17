@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hana.app.repository.CommunityRepository">
+
+    <select id="selectAll" resultType="noticeDto">
+        SELECT * FROM company_notice
+    </select>
+
+    <select id="searchByTitle" resultType="noticeDto">
+        SELECT * FROM company_notice WHERE notice_title LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchByContent" resultType="noticeDto">
+        SELECT * FROM company_notice WHERE notice_content LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="findById" parameterType="Integer" resultType="noticeDto">
+        SELECT * FROM company_notice WHERE notice_idx=#{id}
+    </select>
+</mapper>
