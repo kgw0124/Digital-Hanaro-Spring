@@ -220,8 +220,8 @@
                 <tr>
                     <td>성별</td>
                     <td>
-                        <input type="radio" name="memberGender" checked="checked">남자
-                        <input type="radio" name="memberGender">여자
+                        <input type="radio" name="memberGender" value="male" checked="checked">남자
+                        <input type="radio" name="memberGender" value="female">여자
                     </td>
                 </tr>
                 <tr>
