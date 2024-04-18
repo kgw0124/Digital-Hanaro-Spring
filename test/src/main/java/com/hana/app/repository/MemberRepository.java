@@ -15,4 +15,8 @@ public interface MemberRepository {
     MemberDto findByIdAndNameAndEmail(MemberDto memberDto);
     List<MemberDto> selectAll();
     void save(MemberDto memberDto);
+    List<MemberDto> search(String input);
+    List<MemberDto> searchById(String input);
+    List<MemberDto> searchByName(String input);
+    List<MemberDto> searchByEmail(String input);
 }

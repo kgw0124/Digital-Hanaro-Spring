@@ -32,4 +32,18 @@ public class MemberService {
     public List<MemberDto> get() {
         return memberRepository.selectAll();
     }
+
+    public List<MemberDto> search(String option, String input) {
+        switch (option){
+            case "all":
+                return memberRepository.search(input);
+            case "id":
+                return memberRepository.searchById(input);
+            case "name":
+                return memberRepository.searchByName(input);
+            case "email":
+                return memberRepository.searchByEmail(input);
+        }
+        return null;
+    }
 }

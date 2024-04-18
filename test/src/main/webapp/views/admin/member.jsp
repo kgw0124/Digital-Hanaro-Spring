@@ -17,6 +17,47 @@
     <!-- Bootstarp JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <script>
+        var search = function (){
+            let searchOption = $('select[name=searchOption]').val();
+            let searchInput = $('#searchInput').val();
+
+            $.ajax({
+                url: '<c:url value="/search"/>',
+                data:{
+                    'option':searchOption,
+                    'input':searchInput
+                },
+                success: function(data) {
+                    updateTable(data);
+                }
+            })
+        }
+
+        var sort = function (){
+
+        }
+
+        var top = function (){
+
+        }
+
+        var updateTable = function (data){
+            $('.adminTable tbody').empty();
+
+            $.each(data, function(index, item) {
+                var row = '<tr>' +
+                    '<td>' + item.memberId + '</td>' +
+                    '<td>' + item.memberName + '</td>' +
+                    '<td>' + item.memberEmail + '</td>' +
+                    '<td>' + item.memberBirthDate + '</td>' +
+                    '<td>' + item.memberJoinDate + '</td>' +
+                    '</tr>';
+                $('.adminTable tbody').append(row);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -133,16 +174,14 @@
         </div>
         <div class="adminDiv">
             검색 옵션
-            <select name="search_select" id="search_select">
+            <select id="searchOption" name="searchOption">
                 <option value="all" selected>전체</option>
                 <option value="id">아이디</option>
                 <option value="name">성명</option>
                 <option value="email">이메일</option>
-                <option value="phone">핸드폰</option>
-                <option value="address">주소</option>
             </select>
-            <input type="text" name="search_keyword" id="search_keyword" value="">
-            <input type="image" src="../img/community/search.gif">
+            <input type="text" id="searchInput">
+            <input type="image" src="../img/community/search.gif" onclick="search()">
         </div>
         <div class="adminDiv">
             정렬
@@ -236,7 +275,6 @@
         });
         $('#back-to-top').tooltip('show');
     });
-
 </script>
 </body>
 </html>

@@ -24,4 +24,24 @@
         INSERT INTO company_member VALUES (0,#{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate},NOW())
     </insert>
 
+    <select id="search" resultType="memberDto">
+        SELECT *
+        FROM company_member
+        WHERE member_id LIKE CONCAT('%', #{input}, '%') OR
+            member_name LIKE CONCAT('%', #{input}, '%') OR
+            member_email LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchById" resultType="memberDto">
+        SELECT * FROM company_member WHERE member_id LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchByName" resultType="memberDto">
+        SELECT * FROM company_member WHERE member_name LIKE CONCAT('%', #{input}, '%')
+    </select>
+
+    <select id="searchByEmail" resultType="memberDto">
+        SELECT * FROM company_member WHERE member_email LIKE CONCAT('%', #{input}, '%')
+    </select>
+
 </mapper>
