@@ -57,4 +57,16 @@ public class CommunityService {
         }
         return null;
     }
+
+    public List<NoticeDto> page(String option) {
+        switch (option){
+            case "all":
+                return communityRepository.selectAll();
+            case "5":
+                return communityRepository.select5();
+            case "10":
+                return communityRepository.select10();
+        }
+        return null;
+    }
 }

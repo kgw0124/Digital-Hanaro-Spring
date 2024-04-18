@@ -62,6 +62,20 @@
             })
         }
 
+        var page = function (){
+            let pageOption = $('select[name=pageOption]').val();
+
+            $.ajax({
+                url: '<c:url value="/community/notice/page"/>',
+                data:{
+                    'option':pageOption
+                },
+                success: function(data) {
+                    updateTable(data);
+                }
+            })
+        }
+
         var updateTable = function (data){
             $('.adminTable tbody').empty();
 
@@ -230,10 +244,10 @@
             <div>목록 ${count}건</div>
             <div>
                 한페이지 행수
-                <select class="size" name="page_select" id="page_select">
-                    <option value="page10" selected>10개씩 보기</option>
-                    <option value="page10">20개씩 보기</option>
-                    <option value="page10">50개씩 보기</option>
+                <select class="size" id="pageOption" name="pageOption" onchange="page()">
+                    <option value="all" selected>전체 보기</option>
+                    <option value="5">5개만 보기</option>
+                    <option value="10">10개만 보기</option>
                 </select>
             </div>
         </div>

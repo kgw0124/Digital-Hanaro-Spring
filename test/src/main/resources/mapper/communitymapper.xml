@@ -8,6 +8,14 @@
         SELECT * FROM company_notice
     </select>
 
+    <select id="select5" resultType="noticeDto">
+        SELECT * FROM company_notice LIMIT 5
+    </select>
+
+    <select id="select10" resultType="noticeDto">
+        SELECT * FROM company_notice LIMIT 10
+    </select>
+
     <select id="search" resultType="noticeDto">
         SELECT *
         FROM company_notice

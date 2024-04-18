@@ -120,9 +120,9 @@ public class MemberController {
 
     @RequestMapping("/page")
     @ResponseBody
-    public List<MemberDto> top(@RequestParam("option") String option){
+    public List<MemberDto> page(@RequestParam("option") String option){
         List<MemberDto> list = null;
-        list = memberService.top(option);
+        list = memberService.page(option);
         return list;
     }
 }

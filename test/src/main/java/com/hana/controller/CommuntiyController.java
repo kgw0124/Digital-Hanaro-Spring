@@ -44,7 +44,14 @@ public class CommuntiyController {
     public List<NoticeDto> order(@RequestParam("option") String option){
         List<NoticeDto> list = null;
         list = communityService.order(option);
-        log.info(list.toString());
+        return list;
+    }
+
+    @RequestMapping("/notice/page")
+    @ResponseBody
+    public List<NoticeDto> page(@RequestParam("option") String option){
+        List<NoticeDto> list = null;
+        list = communityService.page(option);
         return list;
     }
 

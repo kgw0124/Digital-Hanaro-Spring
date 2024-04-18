@@ -61,7 +61,7 @@ public class MemberService {
         return null;
     }
 
-    public List<MemberDto> top(String option) {
+    public List<MemberDto> page(String option) {
         switch (option){
             case "all":
                 return memberRepository.selectAll();

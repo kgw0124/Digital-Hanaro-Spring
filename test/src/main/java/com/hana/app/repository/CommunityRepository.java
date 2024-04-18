@@ -10,15 +10,17 @@ import java.util.List;
 @Mapper
 public interface CommunityRepository {
     List<NoticeDto> selectAll();
+    List<NoticeDto> select5();
+    List<NoticeDto> select10();
     List<NoticeDto> search(String input);
     List<NoticeDto> searchByTitle(String input);
     List<NoticeDto> searchByContent(String input);
     List<NoticeDto> searchByMemberId(String input);
-    NoticeDto findById(int id);
-    void save(NoticeDto noticeDto);
-    void edit(NoticeDto noticeDto);
     List<NoticeDto> orderByMemberId();
     List<NoticeDto> orderByMemberIdDesc();
     List<NoticeDto> orderByNoticeDate();
     List<NoticeDto> orderByNoticeDateDesc();
+    NoticeDto findById(int id);
+    void save(NoticeDto noticeDto);
+    void edit(NoticeDto noticeDto);
 }
