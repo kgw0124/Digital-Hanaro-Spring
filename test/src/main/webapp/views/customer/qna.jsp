@@ -44,10 +44,10 @@
 
                     $.each(data, function(index, item) {
                         var row = '<tr>' +
-                            '<td><a href="#" onclick="openWindow(${item.qnaIdx})">' + item.qnaIdx + '</a></td>' +
-                            '<td><a href="#" onclick="openWindow(${item.qnaIdx})">' + item.qnaTitle + '</a></td>' +
-                            '<td><a href="#" onclick="openWindow(${item.qnaIdx})">' + item.qnaName + '</a></td>' +
-                            '<td><a href="#" onclick="openWindow(${item.qnaIdx})">' + item.qnaDate + '</a></td>' +
+                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaIdx + '</a></td>' +
+                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaTitle + '</a></td>' +
+                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaName + '</a></td>' +
+                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaDate + '</a></td>' +
                             '</tr>';
                         $('.qna table').append(row);
                     });
@@ -56,6 +56,7 @@
         }
 
         var openWindow = function(no){
+            console.log("no : " + no);
             window.open('<c:url value="/customer/qnaPw"/>?no=' + no, '비밀번호확인', 'width=430,height=300,location=no,status=no,scrollbars=no');
         }
     </script>
