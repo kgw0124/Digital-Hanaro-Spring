@@ -60,4 +60,16 @@ public class MemberService {
         }
         return null;
     }
+
+    public List<MemberDto> top(String option) {
+        switch (option){
+            case "all":
+                return memberRepository.selectAll();
+            case "5":
+                return memberRepository.select5();
+            case "10":
+                return memberRepository.select10();
+        }
+        return null;
+    }
 }

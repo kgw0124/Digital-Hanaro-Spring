@@ -23,4 +23,6 @@ public interface MemberRepository {
     List<MemberDto> orderByIdDesc();
     List<MemberDto> orderByJoinDate();
     List<MemberDto> orderByJoinDateDesc();
+    List<MemberDto> select5();
+    List<MemberDto> select10();
 }

@@ -20,6 +20,14 @@
         SELECT * FROM company_member
     </select>
 
+    <select id="select5" resultType="memberDto">
+        SELECT * FROM company_member LIMIT 5
+    </select>
+
+    <select id="select10" resultType="memberDto">
+        SELECT * FROM company_member LIMIT 10
+    </select>
+
     <insert id="save" parameterType="memberDto">
         INSERT INTO company_member VALUES (0,#{memberId},#{memberPw},#{memberName},#{memberEmail},#{memberEmailReceive},#{memberPwQuestion},#{memberPwAnswer},#{memberGender},#{memberBirthDate},NOW())
     </insert>

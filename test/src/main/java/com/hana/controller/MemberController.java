@@ -117,4 +117,12 @@ public class MemberController {
         list = memberService.order(option);
         return list;
     }
+
+    @RequestMapping("/page")
+    @ResponseBody
+    public List<MemberDto> top(@RequestParam("option") String option){
+        List<MemberDto> list = null;
+        list = memberService.top(option);
+        return list;
+    }
 }
