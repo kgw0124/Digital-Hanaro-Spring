@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -78,6 +77,14 @@ public class MemberController {
 
         httpSession.setAttribute("id", id); // session에 정보 저장
         return "0"; // 로그인 성공
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession httpSession){
+        if(httpSession != null){
+            httpSession.invalidate();
+        }
+        return "redirect:/";
     }
 
     @RequestMapping("/join")
