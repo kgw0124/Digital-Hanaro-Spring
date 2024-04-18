@@ -30,6 +30,38 @@
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"
     ></script>
+
+    <script>
+        var search = function (){
+            let searchOption = $('select[name=searchOption]').val();
+            let searchInput = $('#searchInput').val();
+
+            $.ajax({
+                url: '<c:url value="/community/notice/search"/>',
+                data:{
+                    'option':searchOption,
+                    'input':searchInput
+                },
+                success: function(data) {
+                    updateTable(data);
+                }
+            })
+        }
+
+        var updateTable = function (data){
+            $('.adminTable tbody').empty();
+
+            $.each(data, function(index, item) {
+                var row = '<tr onclick="edit(' + item.noticeIdx + ')">' +
+                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeIdx + '</a></td>' +
+                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeTitle + '</a></td>' +
+                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeMemberId + '</a></td>' +
+                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeDate + '</a></td>' +
+                    '</tr>';
+                $('.adminTable tbody').append(row);
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -162,19 +194,14 @@
         </div>
         <div class="adminDiv">
             검색 옵션
-            <select name="search_select" id="search_select">
+            <select id="searchOption" name="searchOption">
                 <option value="all" selected>전체</option>
                 <option value="title">제목</option>
                 <option value="content">내용</option>
-                <option value="id">작성자아이디</option>
+                <option value="memberId">작성자아이디</option>
             </select>
-            <input
-                    type="text"
-                    name="search_keyword"
-                    id="search_keyword"
-                    value=""
-            />
-            <input type="image" src="../img/community/search.gif" />
+            <input type="text" id="searchInput">
+            <input type="image" src="../img/community/search.gif" onclick="search()">
         </div>
         <div class="adminDiv">
             정렬

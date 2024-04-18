@@ -10,8 +10,10 @@ import java.util.List;
 @Mapper
 public interface CommunityRepository {
     List<NoticeDto> selectAll();
+    List<NoticeDto> search(String input);
     List<NoticeDto> searchByTitle(String input);
     List<NoticeDto> searchByContent(String input);
+    List<NoticeDto> searchByMemberId(String input);
     NoticeDto findById(int id);
     void save(NoticeDto noticeDto);
     void edit(NoticeDto noticeDto);

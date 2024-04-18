@@ -20,10 +20,14 @@ public class CommunityService {
 
     public List<NoticeDto> search(String option, String input) {
         switch (option){
+            case "all":
+                return communityRepository.search(input);
             case "title":
                 return communityRepository.searchByTitle(input);
             case "content":
                 return communityRepository.searchByContent(input);
+            case "memberId":
+                return communityRepository.searchByMemberId(input);
         }
         return null;
     }
