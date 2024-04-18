@@ -46,6 +46,21 @@ public class CommuntiyController {
         return "redirect:/admin/notice";
     }
 
+    @RequestMapping("/notice/edit")
+    public String edit(Model model, @RequestParam("id") int id){
+        NoticeDto result = communityService.findById(id);
+
+        model.addAttribute("notice", result);
+        return "admin/noticeEdit";
+    }
+
+    @RequestMapping("/notice/editImpl")
+    public String edit(NoticeDto noticeDto, HttpSession httpSession){
+        noticeDto.setNoticeMemberId((String) httpSession.getAttribute("id"));
+        communityService.edit(noticeDto);
+        return "redirect:/admin/notice";
+    }
+
     @RequestMapping("/noticeDetail")
     public String noticeDetail(Model model, @RequestParam("id") int id){
         NoticeDto result = communityService.findById(id);

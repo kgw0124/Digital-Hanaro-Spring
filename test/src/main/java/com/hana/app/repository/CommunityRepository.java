@@ -14,4 +14,5 @@ public interface CommunityRepository {
     List<NoticeDto> searchByContent(String input);
     NoticeDto findById(int id);
     void save(NoticeDto noticeDto);
+    void edit(NoticeDto noticeDto);
 }

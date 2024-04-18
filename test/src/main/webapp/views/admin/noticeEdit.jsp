@@ -30,6 +30,13 @@
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"
     ></script>
+
+    <script>
+        var submit = function (){
+            var form = document.editForm;
+            form.submit();
+        }
+    </script>
 </head>
 
 <body>
@@ -160,70 +167,46 @@
         <div class="adminDiv">
             <h3>공지사항 관리</h3>
         </div>
-        <div class="adminDiv">
-            검색 옵션
-            <select name="search_select" id="search_select">
-                <option value="all" selected>전체</option>
-                <option value="title">제목</option>
-                <option value="content">내용</option>
-                <option value="id">작성자아이디</option>
-            </select>
-            <input
-                    type="text"
-                    name="search_keyword"
-                    id="search_keyword"
-                    value=""
-            />
-            <input type="image" src="../img/community/search.gif" />
-        </div>
-        <div class="adminDiv">
-            정렬
-            <select class="size" name="order_select" id="order_select">
-                <option value="id_asc" selected>아이디 오름차순</option>
-                <option value="id_desc">아이디 내림차순</option>
-                <option value="reg_date_asc">등록일 오름차순</option>
-                <option value="reg_date_desc">등록일 내림차순</option>
-            </select>
-        </div>
-        <div class="adminDiv2" id="tableTitle">
-            <div>목록 ${count}건</div>
-            <div>
-                한페이지 행수
-                <select class="size" name="page_select" id="page_select">
-                    <option value="page10" selected>10개씩 보기</option>
-                    <option value="page10">20개씩 보기</option>
-                    <option value="page10">50개씩 보기</option>
-                </select>
+        <form action="<c:url value="/community/notice/editImpl"/>" name="editForm">
+            <div class="noticeViewTitle adminDiv2">
+                <span>${notice.noticeTitle}</span>
+                <span>
+            <span>글쓴이:${notice.noticeMemberId}</span>
+            <span>글번호:${notice.noticeIdx}</span>
+          </span>
             </div>
-        </div>
-        <div class="">
-            <table class="adminTable">
-                <thead>
-                <tr>
-                    <th>글번호</th>
-                    <th>제목</th>
-                    <th>글쓴이</th>
-                    <th>작성일</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="n" items="${notices}">
-                    <tr onclick="edit(${n.noticeIdx})">
-                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeIdx}</a></td>
-                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeTitle}</a></td>
-                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeMemberId}</a></td>
-                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeDate}</a></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="pageNav adminDiv2">
-            <div><a href='<c:url value="/admin/noticeWrite"/>'>공지글 쓰기</a></div>
+            <div class="adminDiv2">
+                <div class="noticeViewContent">
+                    <input type="hidden" name="noticeIdx" value=${notice.noticeIdx}>
+                    <textarea rows="5" cols="50" id="editor4" name="noticeContent">
+                        ${notice.noticeContent}
+                    </textarea>
+                </div>
+            </div>
+        </form>
+        <div class="noticeViewBtns adminDiv2">
+            <div>
+                <a href="#" onclick="submit()">수정</a>
+                <a href="/admin_notice_delete?notice_idx=1">삭제</a>
+            </div>
+            <div>
+                <a href="/admin_notice">목록</a>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+<!-- <script>CKEDITOR.replace('editor4');</script> -->
+<script>
+    var ckeditor_config = {
+        resize_enaleb: false,
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+        filebrowserUploadUrl: "/ckUpload",
+    };
+    CKEDITOR.replace("editor4", ckeditor_config);
+</script>
 
 <!-- footer -->
 <div class="footer">

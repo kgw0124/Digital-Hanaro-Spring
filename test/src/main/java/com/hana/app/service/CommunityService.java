@@ -35,4 +35,8 @@ public class CommunityService {
     public void save(NoticeDto noticeDto) {
         communityRepository.save(noticeDto);
     }
+
+    public void edit(NoticeDto noticeDto) {
+        communityRepository.edit(noticeDto);
+    }
 }
