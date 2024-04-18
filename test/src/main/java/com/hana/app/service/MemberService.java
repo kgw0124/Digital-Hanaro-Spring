@@ -46,4 +46,18 @@ public class MemberService {
         }
         return null;
     }
+
+    public List<MemberDto> order(String option) {
+        switch (option){
+            case "id_asc":
+                return memberRepository.orderById();
+            case "id_desc":
+                return memberRepository.orderByIdDesc();
+            case "join_date_asc":
+                return memberRepository.orderByJoinDate();
+            case "join_date_desc":
+                return memberRepository.orderByJoinDateDesc();
+        }
+        return null;
+    }
 }

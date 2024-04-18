@@ -44,4 +44,20 @@
         SELECT * FROM company_member WHERE member_email LIKE CONCAT('%', #{input}, '%')
     </select>
 
+    <select id="orderById" resultType="memberDto">
+        SELECT * FROM company_member ORDER BY member_id
+    </select>
+
+    <select id="orderByIdDesc" resultType="memberDto">
+        SELECT * FROM company_member ORDER BY member_id DESC
+    </select>
+
+    <select id="orderByJoinDate" resultType="memberDto">
+        SELECT * FROM company_member ORDER BY member_join_date
+    </select>
+
+    <select id="orderByJoinDateDesc" resultType="memberDto">
+        SELECT * FROM company_member ORDER BY member_join_date DESC
+    </select>
+
 </mapper>

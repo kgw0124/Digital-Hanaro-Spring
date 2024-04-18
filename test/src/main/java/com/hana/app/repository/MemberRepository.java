@@ -19,4 +19,8 @@ public interface MemberRepository {
     List<MemberDto> searchById(String input);
     List<MemberDto> searchByName(String input);
     List<MemberDto> searchByEmail(String input);
+    List<MemberDto> orderById();
+    List<MemberDto> orderByIdDesc();
+    List<MemberDto> orderByJoinDate();
+    List<MemberDto> orderByJoinDateDesc();
 }

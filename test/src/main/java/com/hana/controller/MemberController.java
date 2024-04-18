@@ -109,4 +109,12 @@ public class MemberController {
         list = memberService.search(option, input);
         return list;
     }
+
+    @RequestMapping("/order")
+    @ResponseBody
+    public List<MemberDto> order(@RequestParam("option") String option){
+        List<MemberDto> list = null;
+        list = memberService.order(option);
+        return list;
+    }
 }
