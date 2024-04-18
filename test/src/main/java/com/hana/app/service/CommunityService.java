@@ -43,4 +43,18 @@ public class CommunityService {
     public void edit(NoticeDto noticeDto) {
         communityRepository.edit(noticeDto);
     }
+
+    public List<NoticeDto> order(String option) {
+        switch (option){
+            case "id_asc":
+                return communityRepository.orderByMemberId();
+            case "id_desc":
+                return communityRepository.orderByMemberIdDesc();
+            case "reg_date_asc":
+                return communityRepository.orderByNoticeDate();
+            case "reg_date_desc":
+                return communityRepository.orderByNoticeDateDesc();
+        }
+        return null;
+    }
 }

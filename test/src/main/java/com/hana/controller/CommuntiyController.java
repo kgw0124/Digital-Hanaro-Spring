@@ -39,6 +39,15 @@ public class CommuntiyController {
         return list;
     }
 
+    @RequestMapping("/notice/order")
+    @ResponseBody
+    public List<NoticeDto> order(@RequestParam("option") String option){
+        List<NoticeDto> list = null;
+        list = communityService.order(option);
+        log.info(list.toString());
+        return list;
+    }
+
     @RequestMapping("/notice/save")
     public String save(NoticeDto noticeDto, HttpSession httpSession){
         noticeDto.setNoticeMemberId((String) httpSession.getAttribute("id"));

@@ -48,6 +48,20 @@
             })
         }
 
+        var order = function (){
+            let orderOption = $('select[name=orderOption]').val();
+
+            $.ajax({
+                url: '<c:url value="/community/notice/order"/>',
+                data:{
+                    'option':orderOption
+                },
+                success: function(data) {
+                    updateTable(data);
+                }
+            })
+        }
+
         var updateTable = function (data){
             $('.adminTable tbody').empty();
 
@@ -205,7 +219,7 @@
         </div>
         <div class="adminDiv">
             정렬
-            <select class="size" name="order_select" id="order_select">
+            <select class="size" id="orderOption" name="orderOption" onchange="order()">
                 <option value="id_asc" selected>아이디 오름차순</option>
                 <option value="id_desc">아이디 내림차순</option>
                 <option value="reg_date_asc">등록일 오름차순</option>

@@ -17,4 +17,8 @@ public interface CommunityRepository {
     NoticeDto findById(int id);
     void save(NoticeDto noticeDto);
     void edit(NoticeDto noticeDto);
+    List<NoticeDto> orderByMemberId();
+    List<NoticeDto> orderByMemberIdDesc();
+    List<NoticeDto> orderByNoticeDate();
+    List<NoticeDto> orderByNoticeDateDesc();
 }
