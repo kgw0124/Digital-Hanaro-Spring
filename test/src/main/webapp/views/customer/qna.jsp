@@ -35,15 +35,16 @@
                     'input':searchInput
                 },
                 success: function(data) {
+                    console.log(data);
+
                     $('.qna table').empty();
 
                     var row = '<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th></tr>';
                     $('.qna table').append(row);
 
                     $.each(data, function(index, item) {
-                        var index = index + 1;
                         var row = '<tr>' +
-                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + index + '</a></td>' +
+                            '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaIdx + '</a></td>' +
                             '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaTitle + '</a></td>' +
                             '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaName + '</a></td>' +
                             '<td><a href="#" onclick="openWindow(' + item.qnaIdx + ')">' + item.qnaDate + '</a></td>' +
@@ -133,15 +134,14 @@
                 <th>작성자</th>
                 <th>작성일</th>
             </tr>
-            <c:set var="index" value="1" />
+
             <c:forEach var="q" items="${questions}">
                 <tr>
-                    <td><a href="#" onclick="openWindow(${q.qnaIdx})">${index}</a></td>
+                    <td><a href="#" onclick="openWindow(${q.qnaIdx})">${q.qnaIdx}</a></td>
                     <td><a href="#" onclick="openWindow(${q.qnaIdx})">${q.qnaTitle}</a></td>
                     <td><a href="#" onclick="openWindow(${q.qnaIdx})">${q.qnaName}</a></td>
                     <td><a href="#" onclick="openWindow(${q.qnaIdx})">${q.qnaDate}</a></td>
                 </tr>
-                <c:set var="index" value="${index + 1}" />
             </c:forEach>
         </table>
     </div>
