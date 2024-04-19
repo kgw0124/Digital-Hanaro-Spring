@@ -80,8 +80,9 @@
             $('.adminTable tbody').empty();
 
             $.each(data, function(index, item) {
-                var row = '<tr onclick="edit(' + item.noticeIdx + ')">' +
-                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeIdx + '</a></td>' +
+                var index = index + 1;
+                var row = '<tr>' +
+                    '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + index + '</a></td>' +
                     '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeTitle + '</a></td>' +
                     '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeMemberId + '</a></td>' +
                     '<td><a href="/community/notice/edit?id=' + item.noticeIdx + '">' + item.noticeDate + '</a></td>' +
@@ -262,13 +263,15 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:set var="index" value="1" />
                 <c:forEach var="n" items="${notices}">
-                    <tr onclick="edit(${n.noticeIdx})">
-                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeIdx}</a></td>
+                    <tr>
+                        <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${index}</a></td>
                         <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeTitle}</a></td>
                         <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeMemberId}</a></td>
                         <td><a href="<c:url value="/community/notice/edit"/>?id=${n.noticeIdx}">${n.noticeDate}</a></td>
                     </tr>
+                    <c:set var="index" value="${index + 1}" />
                 </c:forEach>
                 </tbody>
             </table>
